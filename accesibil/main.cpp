@@ -9,7 +9,7 @@ int w[5];
 
 int esteaccesibil(int n)
 {
-    // un numar este accesibl daca are cel putin 2 cifre sau altfel spus este >= 10
+    // un numar este accesibil daca are cel putin 2 cifre sau altfel spus este >= 10
     if(n < 10)
         return 0;
 
@@ -29,30 +29,17 @@ int esteaccesibil(int n)
     return 1;
 }
 
-int nrcifre(int n) 
-{
-    int r = 0;
-    while(n != 0) 
-    {
-        n = n / 10;
-        r++;
-    }
-    return r;
-}
-
-
 int devineaccesibil(int n) 
 {
     if(esteaccesibil(n))
         return 0;
-    int nrcifre_n = nrcifre(n);
     int p10 = 1; // puterea lui 10 ce corespunde cifrei pe care vrem sa o eliminam
     while(true) 
     {
-        int m1 = n % p10; // parta de dupa cifra pe care vrem sa o eliminam
+        int m1 = n % p10; // partea de dupa cifra pe care vrem sa o eliminam
         int m2 = n / (p10 * 10); // partea de dinaintea cifrei pe care o eliminam
         int m = m1 + m2 * p10; // construim numarul 
-        if(esteaccesibil(m) && nrcifre(m) == nrcifre_n - 1)
+        if(esteaccesibil(m))
             return 1;
         p10 = p10 * 10;
         if(m2 == 0)
